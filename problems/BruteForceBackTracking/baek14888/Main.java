@@ -1,4 +1,4 @@
-package BruteForceBackTracking.paek14888;
+package BruteForceBackTracking.baek14888;
 
 import java.util.Arrays;
 import java.util.Scanner;

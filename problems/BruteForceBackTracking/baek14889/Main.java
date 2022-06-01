@@ -1,4 +1,4 @@
-package BruteForceBackTracking.paek14889;
+package BruteForceBackTracking.baek14889;
 
 
 import java.util.ArrayList;
