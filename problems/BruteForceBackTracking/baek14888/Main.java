@@ -41,10 +41,12 @@ public class Main {
             }
         } else {
             for (int i = 0; i < 4; i++) {
-                operator[depth] = i;
-                operator_count[i] += 1;
-                Comb(numbers, operator, operator_count, depth + 1);
-                operator_count[i] -= 1;
+                if (operator_num[i] > operator_count[i]) {
+                    operator[depth] = i;
+                    operator_count[i] += 1;
+                    Comb(numbers, operator, operator_count, depth + 1);
+                    operator_count[i] -= 1;
+                }
             }
         }
     }
