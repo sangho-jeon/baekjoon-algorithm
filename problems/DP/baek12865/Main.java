@@ -3,52 +3,33 @@ package DP.baek12865;
 import java.util.*;
 
 public class Main {
-    static class Stuff{
-        public int W;
-        public int V;
-        public void sout(){
-            System.out.println("weigth: " + this.W + " value: " + this.V);
-        }
-    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] tmp = sc.nextLine().split(" ");
         int N = Integer.parseInt(tmp[0]);
         int K = Integer.parseInt(tmp[1]);
-        ArrayList<Stuff> stuffs = new ArrayList<>();
-        int[] backpack = new int[K+1];
-
-
+        int[] V = new int[N];
+        int[] W = new int[N];
+        int[][] dp = new int[N+1][K+1];
         for (int i = 0; i < N; i++) {
             String[] t = sc.nextLine().split(" ");
-            Stuff s = new Stuff();
-            s.W = Integer.parseInt(t[0]);
-            s.V = Integer.parseInt(t[1]);
-            stuffs.add(s);
+            W[i] = Integer.parseInt(t[0]);
+            V[i] = Integer.parseInt(t[1]);
         }
-        Collections.sort(stuffs, new Comparator<Stuff>() {
-            @Override
-            public int compare(Stuff o1, Stuff o2) {
-                return o1.W - o2.W;
-            }
-        });
-        for (Stuff s:
-             stuffs) {
-            backpack[s.W] = s.V;
+        int max = 0;
 
-        }
-
-        for (int i = 0; i < K; i++) {
-            if(backpack[i] != 0){
-                for (int j = i+1; j < K+1; j++) {
-                    if(backpack[j] != 0){
-                        if(i + j <= K){
-                            backpack[i+j] = Math.max(backpack[i+j], backpack[i] + backpack[j]);
-                        }
-                    }
+        for (int i = 1; i < N+1; i++) {
+            for (int j = 1; j < K+1; j++) {
+                if(j < W[i-1]){
+                    dp[i][j] = dp[i-1][j];
                 }
+                else{
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j - W[i-1]] + V[i-1]);
+                }
+                max = Math.max(max, dp[i][j]);
             }
         }
-        System.out.println(Arrays.stream(backpack).max().getAsInt());
+        System.out.println(max);
     }
 }
