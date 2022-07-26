@@ -11,7 +11,7 @@ public class Main {
         int startRoot = (int)Math.sqrt(start);
         int endRoot = (int)Math.sqrt(end);
         long[] numbers = new long[(int)(endRoot-startRoot+1)];
-        for (int i = 0; i < numbers.length; i++) {
+        for (int i = 0; i <= numbers.length; i++) {
             numbers[i] = startRoot+i;
         }
 
