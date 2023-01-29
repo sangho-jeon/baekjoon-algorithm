@@ -1,43 +1,22 @@
 package DP.baek2624;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
-    public static class Temp{
-        private int n;
-        
-    }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-        int N = sc.nextInt();
-        int[] p = new int[N];
-        int[] n = new int[N];
-        String ters = "sdfsdf";
-
-        for (int i = 0; i < N; i++) {
-            String[] tmp = sc.nextLine().split(" ");
-            if(Objects.equals(tmp[0], tmp[1]))
-            p[i] = Integer.parseInt(tmp[0]);
-            n[i] = Integer.parseInt(tmp[1]);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
+        int K = Integer.parseInt(br.readLine());
+        HashMap<Integer, Integer> coins = new HashMap<>();
+        for (int i = 0; i < K; i++) {
+            String[] tmp = br.readLine().split(" ");
+            int A = Integer.parseInt(tmp[0]);
+            int B = Integer.parseInt(tmp[1]);
+            coins.put(A, B);
         }
-        HashSet<Integer> skfgnlk = new HashSet<>();
-        HashMap<Integer, ArrayList<Integer>> tmp = new HashMap<>();
-        Queue<Integer> dfsv = new LinkedList<>();
-        Stack<Integer> dsf = new Stack<>();
-        PriorityQueue<Integer> dsddddd = new PriorityQueue<>();
-        String string = "ssdv";
-
-
-
-
-        ArrayList<Integer> t = new ArrayList<>();
-        t.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return 0;
-            }
-        });
-
+        System.out.println(coins);
     }
 }
